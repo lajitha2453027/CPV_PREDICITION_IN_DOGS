@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+<meta name="theme-color" content="#2E7D32">
+
+    <title>Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-end; /* Move box to right */
+            align-items: center;
+            padding-right: 80px;
+            overflow: hidden;
+            position: relative;
+            color: white;
+        }
+
+        /* Background Video */
+        video.bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: left center; /* Dog face visible */
+            z-index: -2;
+        }
+
+        /* Light overlay for readability */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.25); /* Light only */
+            z-index: -1;
+        }
+
+        /* Glass Login Container */
+        .login-container {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            padding: 50px;
+            border-radius: 20px;
+            width: 450px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #eee;
+        }
+
+        input:focus {
+            border: 1px solid white;
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Mirror Glass Button */
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.25);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: rgba(255,255,255,0.4);
+            transform: translateY(-3px);
+        }
+
+        p {
+            margin-top: 20px;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #00ffff;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            body {
+                justify-content: center;
+                padding-right: 0;
+            }
+
+            video.bg-video {
+                object-position: center;
+            }
+
+            .login-container {
+                width: 90%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- Background Video -->
+<video autoplay muted loop playsinline class="bg-video">
+    <source src="{{ url_for('static', filename='videos/f.mp4') }}" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<div class="login-container">
+    <h2>Login</h2>
+
+    <form action="{{ url_for('login') }}" method="POST">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account?
+        <a href="{{ url_for('register') }}">Register</a>
+    </p>
+</div>
+
+</body>
+</html>

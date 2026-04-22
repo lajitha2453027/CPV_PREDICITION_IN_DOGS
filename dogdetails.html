@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dog Details</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            background-image: url("{{ url_for('static', filename='images/dog_name.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            display: flex;
+            gap: 80px; /* space between left and right */
+            width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .box {
+            background-color: lch(43.22% 0.61 290.33 / 0.532);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(109, 108, 108, 0.5);
+            flex: 1; /* equal width */
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        label, select, input {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #15cc79;
+            color: black;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #12b66a;
+        }
+
+        /* Responsive: stack on small screens */
+        @media (max-width: 1000px) {
+            .form-container {
+                flex-direction: column;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+<form action="{{ url_for('dogdetails') }}" method="POST" class="form-container">
+    <!-- Left side: Basic Info -->
+    <div class="box">
+        <h2>Basic Info</h2>
+        <label>Dog Name</label>
+        <input type="text" name="dog_name" required>
+        
+
+        <label>Breed</label>
+        <select name="breed">
+             <option>Labrador Retriever</option>
+            <option>Golden Retriever</option>
+            <option>German Shepherd</option>
+<option>Belgian Malinois</option>
+<option>Doberman Pinscher</option>
+<option>Rottweiler</option>
+<option>Boxer</option>
+<option>Great Dane</option>
+<option>Siberian Husky</option>
+<option>Alaskan Malamute</option>
+<option>Akita</option>
+<option>Saint Bernard</option>
+<option>Newfoundland</option>
+<option>Bernese Mountain Dog</option>
+<option>Mastiff</option>
+<option>Bullmastiff</option>
+<option>Cane Corso</option>
+<option>Tibetan Mastiff</option>
+<option>Leonberger</option>
+<option>Samoyed</option>
+<option>Border Collie</option>
+<option>Australian Shepherd</option>
+<option>Australian Cattle Dog</option>
+<option>Shetland Sheepdog</option>
+<option>Old English Sheepdog</option>
+<option>Welsh Corgi (Pembroke)</option>
+<option>Welsh Corgi (Cardigan)</option>
+<option>Belgian Tervuren</option>
+<option>Belgian Sheepdog</option>
+<option>Belgian Laekenois</option>
+<option>Bull Terrier</option>
+<option>Staffordshire Bull Terrier</option>
+<option>American Staffordshire Terrier</option>
+<option>Jack Russell Terrier</option>
+<option>Parson Russell Terrier</option>
+<option>Fox Terrier (Smooth)</option>
+<option>Fox Terrier (Wire)</option>
+<option>Airedale Terrier</option>
+<option>Scottish Terrier</option>
+<option>West Highland White Terrier</option>
+<option>Beagle</option>
+<option>Basset Hound</option>
+<option>Bloodhound</option>
+<option>Dachshund</option>
+<option>Greyhound</option>
+<option>Whippet</option>
+<option>Afghan Hound</option>
+<option>Saluki</option>
+<option>Borzoi</option>
+<option>Irish Wolfhound</option>
+<option>Pug</option>
+<option>Chihuahua</option>
+<option>Pomeranian</option>
+<option>Shih Tzu</option>
+<option>Lhasa Apso</option>
+<option>Maltese</option>
+<option>Havanese</option>
+<option>Bichon Frise</option>
+<option>Toy Poodle</option>
+<option>Miniature Poodle</option>
+<option>Chow Chow</option>
+<option>Finnish Spitz</option>
+<option>Norwegian Elkhound</option>
+<option>Icelandic Sheepdog</option>
+<option>Keeshond</option>
+<option>Eurasier</option>
+<option>Japanese Spitz</option>
+<option>American Eskimo Dog</option>
+<option>Shiba Inu</option>
+<option>Kai Ken</option>
+<option>Indian Pariah Dog</option>
+<option>Rajapalayam</option>
+<option>Mudhol Hound</option>
+<option>Kombai</option>
+<option>Chippiparai</option>
+<option>Rampur Greyhound</option>
+<option>Kanni</option>
+<option>Sinhala Hound</option>
+<option>Basenji</option>
+<option>Thai Ridgeback</option>
+<option>Shar Pei</option>
+<option>Tibetan Spaniel</option>
+<option>Tibetan Terrier</option>
+<option>Japanese Chin</option>
+<option>Korean Jindo</option>
+<option>Chinese Crested</option>
+<option>Azawakh</option>
+<option>Sloughi</option>
+<option>Pharaoh Hound</option>
+<option>Canaan Dog</option>
+<option>Labradoodle</option>
+<option>Goldendoodle</option>
+<option>Cockapoo</option>
+<option>Pomsky</option>
+<option>Maltipoo</option>
+<option>Schnoodle</option>
+<option>Yorkipoo</option>
+<option>Puggle</option>
+<option>Cavapoo</option>
+<option>Sheepadoodle</option>
+<option>Yorkshire Terrier</option>
+<option>Boston Terrier</option>
+<option>Miniature Schnauzer</option>
+<option>Giant Schnauzer</option>
+<option>Standard Schnauzer</option>
+<option>American Bulldog</option>
+<option>English Bulldog</option>
+<option>French Bulldog</option>
+<option>Boerboel</option>
+<option>Presa Canario</option>
+<option>Dogo Argentino</option>
+<option>Dogo Canario</option>
+<option>Peruvian Inca Orchid</option>
+<option>Otterhound</option>
+<option>Sussex Spaniel</option>
+<option>Clumber Spaniel</option>
+<option>English Springer Spaniel</option>
+<option>Welsh Springer Spaniel</option>
+<option>Field Spaniel</option>
+<option>Boykin Spaniel</option>
+<option>American Foxhound</option>
+<option>Treeing Walker Coonhound</option>
+<option>Bluetick Coonhound</option>
+<option>Redbone Coonhound</option>
+<option>Plott Hound</option>
+<option>Finnish Lapphund</option>
+<option>Lapponian Herder</option>
+<option>Swedish Vallhund</option>
+<option>Pyrenean Shepherd</option>
+<option>Polish Lowland Sheepdog</option>
+<option>Briard</option>
+<option>Beauceron</option>
+<option>Kuvasz</option>
+<option>Puli</option>
+<option>Pumi</option>
+<option>Mudi</option>
+<option>Xoloitzcuintli</option>
+<option>Carolina Dog</option>
+<option>Chinook</option>
+<option>McNab Dog</option>
+<option>Toy Fox Terrier</option>
+<option>Rat Terrier</option>
+<option>Manchester Terrier</option>
+<option>Dandie Dinmont Terrier</option>
+<option>Norfolk Terrier</option>
+<option>Norwich Terrier</option>
+<option>Glen of Imaal Terrier</option>
+<option>Irish Terrier</option>
+<option>Kerry Blue Terrier</option>
+<option>Lakeland Terrier</option>
+<option>Silky Terrier</option>
+<option>Australian Terrier</option>
+<option>Lowchen</option>
+<option>Papillon</option>
+<option>Brussels Griffon</option>
+<option>Affenpinscher</option>
+<option>Japanese Terrier</option>
+<option>Russian Toy</option>
+<option>Prague Ratter</option>
+<option>American Hairless Terrier</option>
+<option>Bolognese</option>
+<option>Coton de Tulear</option>
+<option>Spanish Mastiff</option>
+<option>Neapolitan Mastiff</option>
+<option>Anatolian Shepherd</option>
+<option>Kangal</option>
+<option>Caucasian Shepherd</option>
+<option>Central Asian Shepherd</option>
+<option>South Russian Ovcharka</option>
+<option>Estrela Mountain Dog</option>
+<option>Pyrenean Mastiff</option>
+<option>Karst Shepherd</option>
+<option>Tornjak</option>
+<option>Sarplaninac</option>
+<option>Black Russian Terrier</option>
+<option>Cesky Terrier</option>
+<option>Skye Terrier</option>
+<option>Sealyham Terrier</option>
+<option>Bedlington Terrier</option>
+<option>American Leopard Hound</option>
+<option>Danish-Swedish Farmdog</option>
+<option>English Toy Terrier</option>
+<option>Harrier</option>
+<option>Ibizan Hound</option>
+<option>Italian Greyhound</option>
+<option>Polish Hound</option>
+<option>Portuguese Podengo</option>
+<option>Romanian Mioritic Shepherd</option>
+<option>Spanish Water Dog</option>
+<option>Stabyhoun</option>
+<option>Thai Bangkaew</option>
+<option>Yakutian Laika</option>
+<option>Volpino Italiano</option>
+<option>Wirehaired Pointing Griffon</option>
+<option>Wetterhoun</option>
+<option>Zealand Dog</option>
+<option>Barbado da Terceira</option>
+<option>Alapaha Blue Blood Bulldog</option>
+</select>
+
+        <label>Age</label>
+        <input type="number" name="age" required>
+
+        <label>Weight</label>
+        <input type="number" name="weight" required>
+
+        <label>Gender</label>
+        <select name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+
+    <!-- Right side: Symptoms -->
+    <div class="box">
+        <label>Vomiting</label>
+<select name="vomiting">
+    <option value="0">No</option>
+    <option value="1">Yes</option>
+</select>
+
+<label>Diarrhea</label>
+<select name="diarrhea">
+    <option value="0">No</option>
+    <option value="1">Yes</option>
+</select>
+
+<label>Bloody Diarrhea</label>
+<select name="bloody_diarrhea">
+    <option value="0">No</option>
+    <option value="1">Yes</option>
+</select>
+
+<label>Fever</label>
+<select name="fever">
+    <option value="0">No</option>
+    <option value="1">Yes</option>
+</select>
+
+<label>Loss Appetite</label>
+<select name="loss_appetite">
+    <option value="0">No</option>
+    <option value="1">Yes</option>
+</select>
+
+<label>Lethargy</label>
+<select name="lethargy">
+    <option value="0">No</option>
+    <option value="1">Yes</option>
+</select>
+
+<label>Dehydration</label>
+<select name="dehydration">
+    <option value="0">No</option>
+    <option value="1">Yes</option>
+</select>
+
+<label>Weight Loss</label>
+<select name="weight_loss">
+    <option value="0">No</option>
+    <option value="1">Yes</option>
+</select>
+
+<label>Abdominal Pain</label>
+<select name="abdominal_pain">
+    <option value="0">No</option>
+    <option value="1">Yes</option>
+</select>
+
+<label>Vaccination Status</label>
+<select name="vaccination_status">
+    <option value="0">Not Vaccinated</option>
+    <option value="1">Vaccinated</option>
+</select>
+
+<label>Low White Blood Cell</label>
+<select name="white_blood_cell_low">
+    <option value="0">Normal</option>
+    <option value="1">Low</option>
+</select>
+
+
+        <br> </br>
+        <button type="submit">Predict</button>
+    </div>
+</form>
+</body>
+</html>

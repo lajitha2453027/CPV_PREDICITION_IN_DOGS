@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CPV Prediction</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background video */
+        video.bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Dark overlay (optional but recommended) */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        /* Top right icons */
+        .top-icons {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+        }
+
+        .top-icons i {
+            color: white;
+            font-size: 22px;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .top-icons i:hover {
+            color: #ffcc00;
+            transform: scale(1.2);
+        }
+
+        /* Glass box */
+        .glass-box {
+            width: 420px;
+            padding: 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            color: white;
+        }
+
+        .glass-box h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .btn-3d {
+            text-decoration: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            color: white;
+            background: linear-gradient(145deg, #ff4b2b, #ff416c);
+            border-radius: 30px;
+            box-shadow: 0 6px 0 #b22222;
+            display: inline-block;
+            transition: 0.2s;
+        }
+
+        .btn-3d:active {
+            box-shadow: 0 2px 0 #b22222;
+            transform: translateY(4px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Video -->
+    <video autoplay muted loop class="bg-video">
+        <source src="{{ url_for('static', filename='videos/d.mp4') }}" type="video/mp4">
+    </video>
+
+    <!-- Dark Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Top right icons -->
+    <div class="top-icons">
+        <i class="fa-solid fa-info-circle" title="About CPV" onclick="aboutCPV()"></i>
+        <i class="fa-solid fa-envelope" title="Contact" onclick="contactMail()"></i>
+        <i class="fa-solid fa-xmark" title="Close" onclick="closePage()"></i>
+    </div>
+
+    <!-- Glass Box -->
+    <div class="glass-box">
+        <h1>CPV Prediction</h1>
+        <p class="quote">
+            “Protect your dog today, prevent CPV tomorrow 🐾”
+        </p>
+        <a href="/register" class="btn-3d">Start Prediction</a>
+    </div>
+
+    <script>
+        function aboutCPV() {
+            alert("About CPV: Canine Parvovirus is a serious dog disease. Vaccinate your dog!");
+        }
+
+        function contactMail() {
+            window.location.href = "mailto:example@example.com";
+        }
+
+        function closePage() {
+            window.location.href = "/";
+        }
+    </script>
+    <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register("/static/service-worker.js")
+      .then(function(registration) {
+        console.log("Service Worker Registered Successfully");
+      })
+      .catch(function(error) {
+        console.log("Service Worker Registration Failed:", error);
+      });
+  });
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CPV Prediction Result</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet"
+     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+            color: white;
+        }
+
+        video.bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: -1;
+        }
+
+        .glass-container {
+            width: 1100px;
+            max-width: 95%;
+            padding: 50px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .left, .right {
+            flex: 1;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 18px 0;
+        }
+
+        .result-badge {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .glass-btn {
+            padding: 16px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.15);
+            color: white;
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .glass-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+
+        .tips {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .tips h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .tips ol li {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        /* Map Style */
+        #map {
+            height: 400px;
+            margin-top: 20px;
+            display: none;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 900px) {
+            .glass-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<video autoplay muted loop class="bg-video">
+    <source src="{{ url_for('static', filename='videos/e.mp4') }}" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<div class="glass-container">
+
+    <div class="left">
+        <h2>Dog Details</h2>
+        <p>Name: {{ dog_name }}</p>
+        <p>Breed: {{ breed }}</p>
+        <p>Age: {{ age }}</p>
+        <p>Weight: {{ weight }}</p>
+        <p>Gender: {{ gender }}</p>
+    </div>
+
+    <div class="right">
+
+        <div class="result-badge">
+            {{ result }}
+        </div>
+
+        {% if tips %}
+        <div class="btn-group">
+            <button class="glass-btn" onclick="toggleTips()" id="showTipsBtn">
+                Show Tips
+            </button>
+        </div>
+
+        <div class="tips" id="tipsBox">
+            <h3>Important Tips</h3>
+            <ol>
+                {% for tip in tips %}
+                <li>{{ tip }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+        {% endif %}
+
+        <!-- MAP BUTTON -->
+        <div class="btn-group">
+            <button class="glass-btn" onclick="showMap()">
+                🗺 Show Map
+            </button>
+
+            <a href="{{ url_for('home') }}" class="glass-btn">
+                ⬅ Back to Home
+            </a>
+
+            <a href="/nearby" class="glass-btn">
+                🏥 Find Nearby Vet Hospitals & NGOs
+            </a>
+        </div>
+
+        <!-- MAP DIV -->
+        <div id="map"></div>
+
+    </div>
+
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+function toggleTips() {
+    const tips = document.getElementById("tipsBox");
+    const btn = document.getElementById("showTipsBtn");
+
+    if (tips.style.display === "none" || tips.style.display === "") {
+        tips.style.display = "block";
+        btn.textContent = "Hide Tips";
+    } else {
+        tips.style.display = "none";
+        btn.textContent = "Show Tips";
+    }
+}
+
+function showMap() {
+
+    var mapDiv = document.getElementById("map");
+    mapDiv.style.display = "block";
+
+    var map = L.map('map').setView([13.0827, 80.2707], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // Get Current Location
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+
+        // User location marker
+        L.marker([lat, lon]).addTo(map)
+            .bindPopup("📍 Your Current Location")
+            .openPopup();
+
+        map.setView([lat, lon], 13);
+
+        // Find nearby veterinary hospitals
+        var query = `
+        [out:json];
+        node["amenity"="veterinary"](around:5000, ${lat}, ${lon});
+        out;
+        `;
+
+        var url = "https://overpass-api.de/api/interpreter?data=" + encodeURIComponent(query);
+
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {
+
+            data.elements.forEach(function(hospital){
+
+                var hlat = hospital.lat;
+                var hlon = hospital.lon;
+                var name = hospital.tags.name || "Vet Hospital";
+
+                L.marker([hlat, hlon]).addTo(map)
+                    .bindPopup("🏥 " + name);
+
+            });
+
+        });
+
+    });
+}
+
+</script>
+
+</body>
+</html>

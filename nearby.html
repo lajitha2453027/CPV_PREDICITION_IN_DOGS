@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nearby Veterinary Hospitals</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Background video */
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(70%);
+}
+
+/* Main Card */
+.container {
+  background: rgba(244, 234, 234, 0.9);
+  padding: 50px;
+  width: 450px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  color: rgb(58, 6, 214);
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Form */
+form {
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  flex: 200;
+  padding: 30px;
+  border-radius: 15px;
+  border: none;
+}
+
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #27ae60;
+  color: rgb(20, 19, 19);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #219150;
+}
+.back-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #f7f5f4;
+  color: rgb(70, 93, 223);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #cf6d17;
+}
+
+
+.card {
+  background: #eee9e9;
+  padding: 30px;
+  border-radius: 100px;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ✅ Background Video -->
+<video autoplay muted loop playsinline class="bg-video">
+  <source src="{{ url_for('static', filename='videos/dog.mp4') }}" type="video/mp4">
+</video>
+
+<div class="container">
+  <h2>🐾 Nearby Veterinary Hospitals & NGOs</h2>
+
+  <form method="POST" action="/nearby">
+  <input type="text" name="district" placeholder="Enter your district" required>
+  <button type="submit">Find</button>
+</form>
+
+
+  {% if hospitals %}
+    <div class="results"></div>
+    {% for h in hospitals %}
+      <div class="card">
+        <b>{{ h.name }}</b> ({{ h.type }})<br>
+        📍 {{ h.address }}<br>
+        📞 {{ h.phone }}
+      </div>
+    {% endfor %}
+     <!-- ✅ Back button -->
+  <div style="text-align:center; margin-top:20px;">
+    <button onclick="history.back()" class="back-btn">⬅ Back</button>
+  </div>
+  {% endif %}
+</div>
+
+</body>
+</html>
