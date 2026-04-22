@@ -1,0 +1,51 @@
+id,name,type,state,district,address,phone,latitude,longitude
+1,Govt Veterinary Hospital,Hospital,Tamil Nadu,Chennai,Adyar Chennai,442441001,13.0827,80.2707
+2,Blue Cross of India,NGO,Tamil Nadu,Chennai,Velachery Chennai,4446274999,13.084700000000002,80.2727
+3,PFA Chennai,NGO,Tamil Nadu,Chennai,Anna Nagar Chennai,9000001001,13.0867,80.27470000000001
+4,Govt Veterinary Hospital,Hospital,Tamil Nadu,Chennai,Tambaram Chennai,4422445566,13.088700000000001,80.2767
+5,Animal Welfare Trust,NGO,Tamil Nadu,Chennai,Porur Chennai,9000001002,13.0907,80.2787
+6,Govt Veterinary Hospital,Hospital,Tamil Nadu,Coimbatore,Gandhipuram,4222345678,11.0268,76.9658
+7,SREC Veterinary Health Center,Hospital,Tamil Nadu,Coimbatore,SREC Campus,9876543210,11.0288,76.9678
+8,Animal Care Trust,NGO,Tamil Nadu,Coimbatore,Peelamedu,9000001003,11.0308,76.96979999999999
+9,PFA Coimbatore,NGO,Tamil Nadu,Coimbatore,Singanallur,9000001004,11.0328,76.9718
+10,Govt Veterinary Hospital,Hospital,Tamil Nadu,Coimbatore,Pollachi Road,4222334455,11.0348,76.9738
+11,Govt Veterinary Hospital,Hospital,Tamil Nadu,Salem,Old Bus Stand,4272223344,11.6843,78.166
+12,Animal Welfare NGO,NGO,Tamil Nadu,Salem,Hasthampatti,9000001005,11.686300000000001,78.168
+13,PFA Salem,NGO,Tamil Nadu,Salem,Five Roads,9000001006,11.6883,78.17
+14,Govt Veterinary Hospital,Hospital,Tamil Nadu,Salem,Yercaud Road,4272224455,11.6903,78.172
+15,Animal Care NGO,NGO,Tamil Nadu,Salem,Ammapet,9000001007,11.692300000000001,78.174
+16,Govt Veterinary Hospital,Hospital,Tamil Nadu,Madurai,Tallakulam,4522334455,9.9552,78.1498
+17,PFA Madurai,NGO,Tamil Nadu,Madurai,Anna Nagar,9000001008,9.9572,78.1518
+18,Animal Rescue Trust,NGO,Tamil Nadu,Madurai,KK Nagar,9000001009,9.959200000000001,78.1538
+19,Govt Veterinary Hospital,Hospital,Tamil Nadu,Madurai,Thirunagar,4522445566,9.9612,78.1558
+20,Animal Care NGO,NGO,Tamil Nadu,Madurai,Melur Road,9000001010,9.9632,78.1578
+21,Govt Veterinary Hospital,Hospital,Tamil Nadu,Trichy,Chatram,4312445566,10.830499999999999,78.74470000000001
+22,PFA Trichy,NGO,Tamil Nadu,Trichy,Thillai Nagar,9000001011,10.8325,78.7467
+23,Animal Welfare Trust,NGO,Tamil Nadu,Trichy,Woraiyur,9000001012,10.8345,78.7487
+24,Govt Veterinary Hospital,Hospital,Tamil Nadu,Trichy,Srirangam,4312446677,10.8365,78.75070000000001
+25,Animal Care NGO,NGO,Tamil Nadu,Trichy,Kajamalai,9000001013,10.8385,78.7527
+26,Govt Veterinary Hospital,Hospital,Tamil Nadu,Erode,Erode Town,4242233445,11.1271,78.6569
+27,Animal Rescue NGO,NGO,Tamil Nadu,Erode,Perundurai Road,9000001014,11.1271,78.6569
+28,PFA Erode,NGO,Tamil Nadu,Erode,Gobichettipalayam,9000001015,11.1271,78.6569
+29,Govt Veterinary Hospital,Hospital,Tamil Nadu,Erode,Bhavani,4242234456,11.1271,78.6569
+30,Animal Welfare NGO,NGO,Tamil Nadu,Erode,Sathyamangalam,9000001016,11.1271,78.6569
+31,Govt Veterinary Hospital,Hospital,Tamil Nadu,Tirunelveli,Palayamkottai,4622344556,11.1271,78.6569
+32,PFA Tirunelveli,NGO,Tamil Nadu,Tirunelveli,Vannarapettai,9000001017,11.1271,78.6569
+33,Animal Care NGO,NGO,Tamil Nadu,Tirunelveli,Thisayanvilai,9000001018,11.1271,78.6569
+34,Govt Veterinary Hospital,Hospital,Tamil Nadu,Tirunelveli,Cheranmahadevi,4622345678,11.1271,78.6569
+35,Animal Welfare Trust,NGO,Tamil Nadu,Tirunelveli,Ambasamudram,9000001019,11.1271,78.6569
+36,Govt Veterinary Hospital,Hospital,Tamil Nadu,Vellore,Katpadi,4162233445,11.1271,78.6569
+37,PFA Vellore,NGO,Tamil Nadu,Vellore,Gudiyatham,9000001020,11.1271,78.6569
+38,Animal Rescue NGO,NGO,Tamil Nadu,Vellore,Arcot,9000001021,11.1271,78.6569
+39,Govt Veterinary Hospital,Hospital,Tamil Nadu,Vellore,Ambur,4162234456,11.1271,78.6569
+40,Animal Care NGO,NGO,Tamil Nadu,Vellore,Walajapet,9000001022,11.1271,78.6569
+41,Govt Veterinary Hospital,Hospital,Tamil Nadu,Thanjavur,Old Bus Stand,4362234567,11.1271,78.6569
+42,PFA Thanjavur,NGO,Tamil Nadu,Thanjavur,Kumbakonam Road,9000001023,11.1271,78.6569
+43,Animal Rescue Trust,NGO,Tamil Nadu,Thanjavur,Pattukottai,9000001024,11.1271,78.6569
+44,Govt Veterinary Hospital,Hospital,Tamil Nadu,Thanjavur,Orathanadu,4362235678,11.1271,78.6569
+45,Animal Care NGO,NGO,Tamil Nadu,Thanjavur,Thiruvaiyaru,9000001025,11.1271,78.6569
+46,Govt Veterinary Hospital,Hospital,Tamil Nadu,Kanchipuram,Kanchipuram Town,4427222222,11.1271,78.6569
+47,PFA Kanchipuram,NGO,Tamil Nadu,Kanchipuram,Walajabad,9000001026,11.1271,78.6569
+48,Animal Care NGO,NGO,Tamil Nadu,Kanchipuram,Chengalpattu,9000001027,11.1271,78.6569
+49,Govt Veterinary Hospital,Hospital,Tamil Nadu,Kanchipuram,Cheyyar,4427223333,11.1271,78.6569
+50,Animal Welfare NGO,NGO,Tamil Nadu,Kanchipuram,Thiruporur,9000001028,11.1271,78.6569
